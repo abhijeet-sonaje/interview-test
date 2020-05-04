@@ -1,44 +1,74 @@
 import React, { Component } from 'react';
 
+import "./index.scss";
 import { Link } from "react-router-dom";
+import MenuLogo from "./../../menu.svg";
+import UserLogo from "./../../user.svg";
 
-export default class App extends Component {
+export interface IAppProps {
+    setMarginToZero: Function
+}
+export default class App extends Component<IAppProps, any> {
+    constructor(props: IAppProps) {
+        super(props);
+        this.state = {
+            width: "200px",
+            selectedLink: "integration"
+        };
+    }
+
+    hideSidebar() {
+        this.setState({
+            width: "0px"
+        });
+        this.props.setMarginToZero();
+    }
+
+    setLinkToActive(link: any) {
+        this.setState({
+            selectedLink: link
+        });
+    }
+
     public render() {
         return (
-            <div>
-                <div className="row full-height">
-                    <div className="col-md">
-                        <div className="row sidenav-items">
-                            <div className="col-md">
-                                User Image
-                            </div>
+            <div className="row sidebar full-height" style={{ width: this.state.width }}>
+                <div className="col-md">
+                    <div className="row ">
+                        <div className="col-md text-right">
+                            <img className="menu-logo" onClick={(e) => { this.hideSidebar(); }} src={MenuLogo} alt="Menu Icon" />
                         </div>
-                        <hr />
-                        <div className="row sidenav-items">
-                            <div className="col-md">
-                                <Link to="/integration">Integration</Link>
-                            </div>
+                    </div>
+                    <div className="row ">
+                        <div className="col-md text-center">
+                            <img className="user-logo" src={UserLogo} alt="User Icon" />
                         </div>
-                        <div className="row sidenav-items">
-                            <div className="col-md">
-                                <Link to="/analytics">Analytics</Link>
-                            </div>
+                    </div>
+                    <hr />
+                    <div className={"row sidenav-items" + (this.state.selectedLink === "integration" ? " active" : "")}>
+                        <div className="col-md">
+                            <Link to="/integration" onClick={(e) => { this.setLinkToActive("integration"); }}>Integration</Link>
                         </div>
-                        <div className="row sidenav-items">
-                            <div className="col-md">
-                                <Link to="/reports">Reports</Link>
-                            </div>
+                    </div>
+                    <div className={"row sidenav-items" + (this.state.selectedLink === "analytics" ? " active" : "")}>
+                        <div className="col-md">
+                            <Link to="/analytics" onClick={(e) => { this.setLinkToActive("analytics"); }}>Analytics</Link>
                         </div>
-                        <hr />
-                        <div className="row sidenav-items">
-                            <div className="col-md">
-                                <Link to="/insights">Insights</Link>
-                            </div>
+                    </div>
+                    <div className={"row sidenav-items" + (this.state.selectedLink === "reports" ? " active" : "")}>
+                        <div className="col-md">
+                            <Link to="/reports" onClick={(e) => { this.setLinkToActive("reports"); }}>Reports</Link>
                         </div>
-                        <div className="row sidenav-items">
-                            <div className="col-md">
-                                <Link to="/contactus">Contact US</Link>
-                            </div>
+                    </div>
+                    <hr />
+                    <div className={"row sidenav-items" + (this.state.selectedLink === "insights" ? " active" : "")}>
+                        <div className="col-md">
+                            <Link to="/insights" onClick={(e) => { this.setLinkToActive("insights"); }}>Insights</Link>
+                        </div>
+                    </div>
+                    <div className={"row sidenav-items" + (this.state.selectedLink === "contactus" ? " active" : "")}>
+                        <div className="col-md">
+                            <Link to="/contactus" onClick={(e) => { this.setLinkToActive("contactus"); }}>Contact US</Link>
                         </div>
                     </div>
                 </div>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 
 import Integration from './Integration/index';
 import Analytics from './Analytics/index';
@@ -14,11 +14,11 @@ export default class App extends Component<any, any> {
                 <div className="col-md col-sm">
                     MainComponent
                     <Switch>
-                        <Route path="/integration">
-                            <Integration />
-                        </Route>
                         <Route path="/analytics">
                             <Analytics />
+                            <Route path="/integration">
+                                <Integration />
+                            </Route>
                         </Route>
                         <Route path="/reports">
                             <Reports />
@@ -30,6 +30,9 @@ export default class App extends Component<any, any> {
                             <ContactUs />
                         </Route>
                     </Switch>
+                    <Route exact path="/" render={() => (
+                        <Redirect to="/integration" />
+                    )} />
                 </div>
             </div>
         );
