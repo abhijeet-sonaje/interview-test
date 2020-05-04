@@ -17,14 +17,20 @@ class App extends Component<any, any> {
     setMarginToZero() {
         this.setState({
             margin: "0px"
-        })
+        });
+    }
+
+    resetMargin() {
+        this.setState({
+            margin: "200px"
+        });
     }
 
     render() {
         return (
             <div className="main-container">
                 <Router>
-                    <Sidenav setMarginToZero={this.setMarginToZero.bind(this)} />
+                    <Sidenav setMarginToZero={this.setMarginToZero.bind(this)} resetMargin={this.resetMargin.bind(this)} />
                     <div className="main" style={{ marginLeft: this.state.margin }}>
                         <Header name="ABC" />
                         <MainComponent />
