@@ -6,19 +6,19 @@ import Analytics from './Analytics/index';
 import Reports from './Reports/index';
 import Insights from './Insights/index';
 import ContactUs from './ContactUs/index';
+import Welcome from './Welcome/index';
 
 export default class App extends Component<any, any> {
     public render() {
         return (
-            <div className="row main-component-height">
+            <div className="row">
                 <div className="col-md col-sm">
-                    MainComponent
                     <Switch>
+                        <Route path="/integration">
+                            <Integration />
+                        </Route>
                         <Route path="/analytics">
                             <Analytics />
-                            <Route path="/integration">
-                                <Integration />
-                            </Route>
                         </Route>
                         <Route path="/reports">
                             <Reports />
@@ -29,9 +29,12 @@ export default class App extends Component<any, any> {
                         <Route path="/contactus">
                             <ContactUs />
                         </Route>
+                        <Route path="/">
+                            <Welcome />
+                        </Route>
                     </Switch>
                     <Route exact path="/" render={() => (
-                        <Redirect to="/integration" />
+                        <Redirect to="/" />
                     )} />
                 </div>
             </div>

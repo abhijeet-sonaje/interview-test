@@ -15,7 +15,7 @@ export default class App extends Component<IAppProps, any> {
         super(props);
         this.state = {
             width: "200px",
-            selectedLink: "integration"
+            selectedLink: ""
         };
     }
 
