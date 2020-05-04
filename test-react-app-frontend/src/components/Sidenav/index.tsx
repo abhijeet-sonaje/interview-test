@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import { Link } from "react-router-dom";
+
 export default class App extends Component {
     public render() {
         return (
@@ -14,28 +16,28 @@ export default class App extends Component {
                         <hr />
                         <div className="row sidenav-items">
                             <div className="col-md">
-                                Integration
+                                <Link to="/integration">Integration</Link>
                             </div>
                         </div>
                         <div className="row sidenav-items">
                             <div className="col-md">
-                                Analytics
+                                <Link to="/analytics">Analytics</Link>
                             </div>
                         </div>
                         <div className="row sidenav-items">
                             <div className="col-md">
-                                Reports
+                                <Link to="/reports">Reports</Link>
                             </div>
                         </div>
                         <hr />
                         <div className="row sidenav-items">
                             <div className="col-md">
-                                Insights
+                                <Link to="/insights">Insights</Link>
                             </div>
                         </div>
                         <div className="row sidenav-items">
                             <div className="col-md">
-                                Contact US
+                                <Link to="/contactus">Contact US</Link>
                             </div>
                         </div>
                     </div>
