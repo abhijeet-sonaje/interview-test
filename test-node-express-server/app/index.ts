@@ -6,8 +6,6 @@ import bodyParser from 'body-parser';
 import Ddos from 'ddos';
 import { BAD_REQUEST } from 'http-status-codes';
 import http from 'http';
-import fs from 'fs';
-import basicAuth from 'express-basic-auth';
 
 import './db';
 import BaseRouter from './components/';
@@ -56,12 +54,6 @@ export class Server {
         this.app.use(bodyParser.urlencoded({ extended: false }));
         this.app.use(bodyParser.json());
 
-        // Basic Authentication
-        // this.app.use(basicAuth({
-        //     users: { 'dashboarduser': 'l,[Xma9pDrPU1cj' },
-        //     unauthorizedResponse: (req) => { return 'Unauthorized'; }
-        // }));
-
         // Print API errors
         this.app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
             console.error(err.message, err);
@@ -83,17 +75,9 @@ export class Server {
 
     startServer() {
         const port = this.app.get('port');
-        // const options: any = {
-        //     key: fs.readFileSync(__dirname + '/../ssl/_.key'),
-        //     cert: fs.readFileSync(__dirname + '/../ssl/_.crt')
-        // }
-        // if (fs.existsSync(__dirname + '/../ssl/ca.crt')) {
-        //     const caCertificate = fs.readFileSync(__dirname + '/../ssl/ca.crt');
-        //     options.ca = caCertificate;
-        // }
         const server = http.createServer(this.app);
         server.listen(port, () => {
-            console.log(`Spdy Server is running on port : ${port}`); // eslint-disable-line no-console
+            console.log(`Server is running on port : ${port}`); // eslint-disable-line no-console
         });
         this.isServerUp();
         this.setDefaultRoute();

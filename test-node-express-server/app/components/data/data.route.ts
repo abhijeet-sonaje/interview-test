@@ -1,6 +1,6 @@
 import express from 'express';
 
-import randomController from './random.controller';
+import randomController from './data.controller';
 
 const router = express.Router();
 
