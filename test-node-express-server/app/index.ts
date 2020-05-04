@@ -7,9 +7,7 @@ import Ddos from 'ddos';
 import { BAD_REQUEST } from 'http-status-codes';
 import http from 'http';
 
-import './db';
 import BaseRouter from './components/';
-import './middlewares';
 
 export class Server {
     app;
