@@ -5,20 +5,17 @@ GET http://localhost:3000/health HTTP/1.1
 
 ###
 
-# POST a user
-POST http://localhost:3000/api/user HTTP/1.1
+# POST Latest ndays to CSVFile
+POST http://localhost:3000/api/data HTTP/1.1
 Content-Type: application/json
 
 {
-    "given_name": "Jonh",
-    "family_name": "Doe",
-    "name": "Jonh Doe",
-    "email": "doe.jonh@gmail.com"
+	"ndays" : 60
 }
 
 ###
 
-# GET all users
-GET http://localhost:3000/api/user HTTP/1.1
+# GET all CsvFile Data
+GET http://localhost:3000/api/data HTTP/1.1
 
 ###

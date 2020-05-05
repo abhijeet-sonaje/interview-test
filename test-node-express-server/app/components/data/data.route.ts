@@ -1,10 +1,10 @@
 import express from 'express';
 
-import randomController from './data.controller';
+import dataController from './data.controller';
 
 const router = express.Router();
 
-router.get('/', randomController.getAllData);
-// router.post('/', randomController.postAData);
+router.get('/', dataController.getAllData);
+router.post('/', dataController.postAData);
 
 export default router;
