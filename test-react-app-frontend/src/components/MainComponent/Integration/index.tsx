@@ -52,7 +52,7 @@ export default class Itegration extends Component<any, any> {
     infiniteScroll() {
         if (
             window.innerHeight + document.documentElement.scrollTop
-            === document.documentElement.offsetHeight
+            === (document.documentElement.offsetHeight - 100)
         ) {
             const arrayLength: number = this.state.ApiArray.length;
             const apiArray = this.state.ApiArray;
